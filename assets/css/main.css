@@ -14,6 +14,9 @@
 	
 	--navbar-font-color: white;
 	--navbar-transition: 0.2s;
+	
+	--link-hover-color: #764740;
+	--heading-anchor-hover-color: #d49595;
 };
 
 
@@ -39,7 +42,7 @@ body {
 	background-image: url("/assets/images/bg.png");
 	background-repeat: repeat;
 	background-color: #1a1a1a;
-	color: #e8e8e8;
+	color: #d0d0d0;
 	margin: 0 0 0 0;
 	padding: 40px 0 40px 0;
 }
@@ -94,18 +97,30 @@ a {
 	color: #ac7870;
 	cursor: pointer;
 	text-decoration: none;
+	transition: var(--navbar-transition);
 }
 a:hover {
-	color: #764740;
+	color: var(--link-hover-color);
+	transition: var(--navbar-transition);
 }
+a.heading-anchor {
+	color: inherit;
+	text-decoration: none;
+	transition: var(--navbar-transition);
+	
+	&:hover {
+		color: var(--heading-anchor-hover-color);
+	}
+}
+/* Not entirely happy about how these look... */
 a.external-link:after {
 	background-image: url(/assets/images/external-link.png);
 	background-size: 20px 20px;
 	display: inline-block;
 	width: 20px;
 	height: 20px;
-	vertical-align: text-bottom;
-	margin-left: 3px;
+	vertical-align: middle;
+	margin-left: 0.2em;
 	content: "";
 }
 a.external-link:hover:after {
@@ -114,28 +129,8 @@ a.external-link:hover:after {
 	display: inline-block;
 	width: 20px;
 	height: 20px;
-	vertical-align: text-bottom;
-	margin-left: 3px;
-	content: "";
-}
-a.internal-link:after {
-	background-image: url(/assets/images/internal-link.png);
-	background-size: 20px 20px;
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	vertical-align: text-bottom;
-	margin-left: 3px;
-	content: "";
-}
-a.internal-link:hover:after {
-	background-image: url(/assets/images/internal-link-hover.png);
-	background-size: 20px 20px;
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	vertical-align: text-bottom;
-	margin-left: 3px;
+	vertical-align: middle;
+	margin-left: 0.2em;
 	content: "";
 }
 
@@ -329,7 +324,7 @@ code {
 	position: fixed;
 	overflow: hidden;
 	z-index: 10;
-	
+
 	width: 100%;
 	min-height: 50px;
 	max-height: 50px;
@@ -405,10 +400,12 @@ code {
 	
 	padding: 14px 16px;
 	background-color: inherit;
+	transition: var(--navbar-transition);
 }
 .navbar a:hover, .nav-dropdown:hover .nav-dropbtn {
 	background-color: var(--navbar-bg-hover-color);
 	cursor: pointer;
+	transition: var(--navbar-transition);
 }
 .nav-dropdown-content {
 	display: none;
@@ -523,11 +520,7 @@ code {
 	.nav-dropdown .nav-dropbtn {
 		text-align: left;
 	}
-	
-	.navbar.responsive .nav-dropdown span {
-		display: none;
-	}
-	
+		
 }
 
 
