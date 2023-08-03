@@ -23,9 +23,9 @@
 
 ----
 
-## Overview
+## <a class="heading-anchor" href="#overview" onclick="scrollToLink(this)">Overview</a>
 
-### Philosophy
+### <a class="heading-anchor" href="#philosophy" onclick="scrollToLink(this)">Philosophy</a>
 
 Markdown is intended to be as easy-to-read and easy-to-write as is feasible.
 
@@ -37,7 +37,8 @@ filters -- including [Setext](http://docutils.sourceforge.net/mirror/setext.html
 [Grutatext](http://www.triptico.com/software/grutatxt.html), and [EtText](http://ettext.taint.org/doc/) -- the single biggest source of
 inspiration for Markdown's syntax is the format of plain text email.
 
-## Block Elements
+## <a class="heading-anchor" href="#block-elements" onclick="scrollToLink(this)">Block Elements</a>
+	
 
 ### Paragraphs and Line Breaks
 
