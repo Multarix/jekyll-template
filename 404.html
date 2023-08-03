@@ -1,0 +1,29 @@
+---
+permalink: /404.html
+title: "404"
+description: "Page not found"
+---
+
+<script>
+/*
+A little hack to deal with GitHub Pages' case sensitivity
+Check if the URL is fully lowercase, if not, redirect to the lowercase URL
+Just in case our links have uppercase in them.
+It also means that at most, it should redirect only once.
+Credit: https://stackoverflow.com/a/73263779
+*/
+window.onload = () => {
+	currentURL = window.location.href;
+	lowerCaseURL = currentURL.toLowerCase();
+	if(currentURL != lowerCaseURL){
+		location.replace(lowerCaseURL);
+	}
+};
+</script>
+
+
+<div class="text-center">
+	<img src="/assets/images/site-logo.png" height="200" width="200" loading="eager">
+	<h1>404 - Not Found</h1>
+	<p><a href="{{ site.baseurl }}/">Return to the homepage</a></p>
+</div>

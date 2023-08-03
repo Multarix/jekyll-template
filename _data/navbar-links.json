@@ -1,0 +1,52 @@
+[
+	{
+		"url": "/",
+		"name": "home",
+		"img": "",
+		"dropdown": false,
+		"hover-links": []
+	},
+	{
+		"url": "/test",
+		"name": "test",
+		"img": "",
+		"dropdown": false,
+		"hover-links": []
+	},
+	{
+		"url": "/projects",
+		"name": "projects",
+		"img": "",
+		"dropdown": true,
+		"hover-links": [
+			{
+				"url": "/projects/1",
+				"name": "Project 1",
+				"img": ""
+			},
+			{
+				"url": "/projects/2",
+				"name": "Project 2",
+				"img": ""
+			},
+			{
+				"url": "/projects/3",
+				"name": "Project 3",
+				"img": ""
+			},
+			{
+				"url": "/projects/4",
+				"name": "Project 4",
+				"img": ""
+			}
+		]
+	},
+	{
+		"url": "https://github.com/Multarix/",
+		"name": "github",
+		"img": "",
+		"dropdown": false,
+		"hover-links": []
+	}
+]
+

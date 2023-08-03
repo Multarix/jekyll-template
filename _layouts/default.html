@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+	<head>
+		<!-- Meta Tags -->
+		<meta charset="utf-8">
+		<meta property="og:title" content="{{ page.title }} | {{ page.siteName }}"/>
+		<meta property="og:description" content="{{ page.description }}"/>
+		<meta property="og:type" content="website"/>
+		<meta property="og:site_name" content="{{ page.siteURL }}"/>
+		<meta property="og:url" content="{{ site.baseurl }}"/>
+		<meta property="og:image" content="{{ 'assets/images/site-logo.png' | relative_url }}"/>
+		<meta content="#764740" data-react-helmet="true" name="theme-color"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href="{{ 'favicon/apple-touch-icon.png' | relative_url }}">
+		<link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon/favicon-32x32.png' | relative_url }}">
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ 'favicon/favicon-16x16.png' | relative_url }}">
+		<link rel="manifest" href="{{ 'favicon/site.webmanifest' | relative_url }}">
+		
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="{{ 'assets/css/main.css' | relative_url }}">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		
+		<!-- Javascript -->
+		<script type="text/javascript" defer src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+		<script type="text/javascript" defer src="{{ 'assets/js/funcs.js' | relative_url }}"></script>
+		
+		<!-- Title -->
+		<title>{% if jekyll.environment == "development" %}(dev) {% endif %}{{ page.title }} | Multarix's Projects</title>
+	</head>
+
+
+	<body>
+		{% include navbar.html %}
+    	<div class="wrapper">
+			<div class="page-content">
+        		{{ content }}
+			</div>
+    	</div>
+	</body>
+</html>
