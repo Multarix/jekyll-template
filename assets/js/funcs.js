@@ -2,7 +2,7 @@ const elementCache = {};
 
 function scrollToAnchorLink(e) {
 	e.preventDefault();
-	const anchorLink = `[name='${this.hash.replace("#", "")}']`;
+	const anchorLink = `[id='${this.hash.replace("#", "")}']`;
 	const targetElement = elementCache[anchorLink] || document.querySelector(anchorLink);
 	elementCache[anchorLink] = targetElement;
 	const offset = targetElement?.getBoundingClientRect()?.top + window.scrollY;
@@ -41,6 +41,17 @@ window.onload = scrollToAnchorLinkOnLoad;
 function topNavMobile() {
 	const x = document.getElementById("navbar");
 	x.className = (x.className === "navbar") ? "navbar responsive" : "navbar";
+}
+
+
+function scrollToLink(element) {
+	if(!element) return;
+	if(!element.href) return;
+
+	const hashLink = window.location.href.split('#')[0] + element.getAttribute('href');
+
+	history.replaceState(null, null, hashLink);
+	navigator.clipboard.writeText(hashLink);
 }
 
 
