@@ -10,8 +10,6 @@
 #   math_engine: mathjax
 #   syntax_highlighter: rouge
 
-host: 0.0.0.0
-
 safe: true
 
 # Forced Plugins:
@@ -56,4 +54,3 @@ defaults:
     values:
       layout: "default"
       siteName: "Multarix's Projects"
-      siteURL: "multarix.com"
