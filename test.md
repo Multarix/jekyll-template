@@ -104,18 +104,17 @@ Blockquotes can contain other Markdown elements, including headers, lists,
 and code blocks:
 
 > ## This is a header.
-> 
+>
 > 1.   This is the first list item.
 > 2.   This is the second list item.
-> 
+>
 > Here's some example code:
-> 
->     return shell_exec("echo $input | $markdown_script");
+>
+>	return shell_exec("echo $input | $markdown_script");
 
 Any decent text editor should make email-style quoting easy. For
 example, with BBEdit, you can make a selection and choose Increase
 Quote Level from the Text menu.
-
 
 ### Lists
 
@@ -343,14 +342,10 @@ To add a table, use three or more hyphens (---) to create each column’s header
 
 The rendered output looks like this:
 
-<div markdown="1" class="table-container">
-
 | Syntax      | Description |
 | ----------- | ----------- |
 | Header      | Title       |
 | Paragraph   | Text        |
-
-</div>
 
 Cell widths can vary, as shown below. The rendered output will look the same.
 
@@ -377,14 +372,10 @@ You can align text in the columns to the left, right, or center by adding a colo
 
 The rendered output looks like this:
 
-<div markdown="1" class="table-container">
-
 | Syntax      | Description | Test Text     |
 | :---        |    :----:   |          ---: |
 | Header      | Title       | Here's this   |
 | Paragraph   | Text        | And more      |
-
-</div>
 
 ### Task Lists
 
