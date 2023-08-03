@@ -1,5 +1,30 @@
 const elementCache = {};
 
+document.querySelectorAll('pre code').forEach(codeblock => {
+	const parent = codeblock.parentNode;
+
+	const copyButton = document.createElement('button');
+	copyButton.type = "button";
+	copyButton.ariaLabel = "Copy code to clipboard";
+	copyButton.innerText = "content_copy";
+	copyButton.className = "material-icons copy-button";
+
+	copyButton.onclick = async () => {
+
+		navigator.clipboard.writeText(codeblock.innerText);
+
+		copyButton.innerText = "check";
+
+		setTimeout(() => {
+			copyButton.innerText = "content_copy";
+			copyButton.blur();
+		}, 1500);
+	};
+
+	parent.prepend(copyButton);
+});
+
+
 function scrollToAnchorLink(e) {
 	e.preventDefault();
 	const anchorLink = `[id='${this.hash.replace("#", "")}']`;
@@ -33,7 +58,6 @@ function scrollToAnchorLinkOnLoad() {
 		}
 	}
 }
-
 
 window.onload = scrollToAnchorLinkOnLoad;
 

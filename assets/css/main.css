@@ -292,6 +292,41 @@ div.codeContainer {
 	min-width: 340px;
 }
 
+button.copy-button {
+	font-family: 'Material Icons';
+	
+	float: right;
+    display: inline;
+	
+    background-color: #383838;
+    color: white;
+	
+    border: 0;
+    box-shadow: 0 0 0 0;
+    border-radius: 0;
+	
+    height: 42px;
+    padding: 9px 9px 9px 12px;
+	
+    transition: 0.2s;
+	opacity: 0;
+	
+	/* content: "content_copy"; */
+	
+	&:hover {
+		background-color: #8b5a53;
+		cursor: pointer;
+	}
+	
+	&:focus {
+		background-color: #538b58;
+	}
+}
+
+pre:hover > button.copy-button {
+	opacity: 1;
+}
+
 
 
 /* Markdown */
