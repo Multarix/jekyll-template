@@ -6,8 +6,8 @@
 		<meta property="og:title" content="{{ page.title }} | {{ page.siteName }}"/>
 		<meta property="og:description" content="{{ page.description }}"/>
 		<meta property="og:type" content="website"/>
-		<meta property="og:site_name" content="{{ page.siteURL }}"/>
-		<meta property="og:url" content="{{ site.baseurl }}"/>
+		<meta property="og:site_name" content="{{ site.url | split: '//' | last | split: '/' | first }}"/>
+		<meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
 		<meta property="og:image" content="{{ 'assets/images/site-logo.png' | relative_url }}"/>
 		<meta content="#764740" data-react-helmet="true" name="theme-color"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
