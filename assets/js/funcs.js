@@ -1,5 +1,6 @@
 const elementCache = {};
 
+// "Copy Code to Clipboard" buttons for code blocks
 document.querySelectorAll('pre code').forEach(codeblock => {
 	const parent = codeblock.parentNode;
 
@@ -22,6 +23,19 @@ document.querySelectorAll('pre code').forEach(codeblock => {
 	};
 
 	parent.prepend(copyButton);
+});
+
+
+// Place all tables into a div with class "table-container"
+document.querySelectorAll('table').forEach(table => {
+	const parent = table.parentNode;
+	if(parent.className === "table-container") return;
+
+	const div = document.createElement('div');
+	div.className = "table-container";
+
+	parent.insertBefore(div, table);
+	div.appendChild(table);
 });
 
 
