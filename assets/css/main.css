@@ -8,6 +8,8 @@
     font-style: normal;
 }
 
+
+
 /* Using :root/ setting variables breaks these? */
 ::-webkit-scrollbar {
 	-webkit-appearance: none;
@@ -24,6 +26,8 @@
 ::-webkit-scrollbar-thumb:hover {
 	background: #555;
 }
+
+
 
 /* Basic/ Standard HTML5 tags */
 body {
@@ -174,24 +178,20 @@ ul {
 	padding-left: 2em;
 }
 ul li {
-	padding-left: 0.5em;
-}
-ul li::marker {
-	content: ">";
-	font-weight: bold;
+	&::marker {
+		content: ">  ";
+		font-weight: bold;
+	}
 }
 ul li ul li {
-	padding-left: 0.5em;
 	line-height: 20px;
+	
+	&::marker {
+		content: "├─  ";
+		font-weight: bold;
+	}
 }
-ul li ul li::marker {
-	content: "├─";
-	font-weight: bold;
-}
-ul li ul li:last-child::marker {
-	content: "└─";
-	font-weight: bold;
-}
+ul li ul li:last-child::marker { content: "└─  "; }
 
 
 
@@ -265,8 +265,7 @@ pre.code {
 }
 pre code.hljs {
     display: block;
-	/* This causes some issues, so I disabled it...? */
-    overflow-x:auto;
+    overflow-x: auto;
     padding: 1em;
 }
 code.hljs {
