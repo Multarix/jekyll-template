@@ -14,12 +14,29 @@ document.querySelectorAll('pre code').forEach(codeblock => {
 
 		navigator.clipboard.writeText(codeblock.innerText);
 
-		copyButton.innerText = "check";
+		copyButton.style.opacity = 1;
+		copyButton.style.color = "transparent";
+		copyButton.style.backgroundColor = "#538b58";
+
+		setTimeout(() => {
+			copyButton.innerText = "check";
+			copyButton.style.color = "white";
+		}, 205);
+
+		setTimeout(() => {
+			copyButton.style.color = "white";
+		}, 210);
+
+		setTimeout(() => {
+			copyButton.style.opacity = 0;
+		}, 1515);
 
 		setTimeout(() => {
 			copyButton.innerText = "content_copy";
+			copyButton.style = "";
 			copyButton.blur();
-		}, 1500);
+		}, 1720);
+
 	};
 
 	parent.prepend(copyButton);
