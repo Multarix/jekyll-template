@@ -54,3 +54,7 @@ defaults:
     values:
       layout: "default"
       siteName: "Multarix's Projects"
+
+
+exclude:
+  readme.md
