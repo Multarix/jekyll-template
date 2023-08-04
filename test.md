@@ -1,3 +1,9 @@
+---
+permalink: /test/
+title: "Test"
+---
+
+
 # Markdown: Syntax
 
 *   [Overview](#overview)

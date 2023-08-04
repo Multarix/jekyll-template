@@ -1,5 +1,6 @@
 ---
 title: "Home"
+permalink: /
 ---
 
 # This is a Heading (h1)!
