@@ -56,6 +56,17 @@ document.querySelectorAll('table').forEach(table => {
 });
 
 
+// Make all links with class "open-in-new" open in a new tab
+document.querySelectorAll('a.open-in-new').forEach(link => {
+	link.target = "_blank";
+});
+
+
+// Make all links that start with "#" scroll to the element with the id
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+	anchor.addEventListener('click', scrollToAnchorLink);
+});
+
 function scrollToAnchorLink(e) {
 	e.preventDefault();
 	const anchorLink = `[id='${this.hash.replace("#", "")}']`;
@@ -70,9 +81,6 @@ function scrollToAnchorLink(e) {
 	}
 }
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-	anchor.addEventListener('click', scrollToAnchorLink);
-});
 
 function scrollToAnchorLinkOnLoad() {
 	const hash = window.location.hash;
