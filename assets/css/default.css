@@ -82,7 +82,7 @@ h6 {
 	font-size: 1em;
 }
 .title-margin {
-	margin: 5px 25px 10px 25px;
+	margin: 10px 25px 10px 25px;
 }
 
 
@@ -481,7 +481,7 @@ code {
 /* Smaller screens */
 @media screen and (max-width: 950px) {
 	body {
-		padding: 0 0 20px 0;
+		padding: 0;
 		background-image: unset;
 	}
 	
@@ -552,7 +552,7 @@ code {
 /* Page content starts getting too small for the padding */
 @media screen and (max-width: 499px) {
 	.page-content {
-		padding: 1px 10px 20px 10px;
+		padding: 1px 15px 20px 15px;
 	}
 }
 
