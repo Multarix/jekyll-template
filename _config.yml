@@ -29,7 +29,7 @@ whitelist:
   - jekyll-coffeescript
   - jekyll-default-layout
   - jekyll-gist
-  # - jekyll-github-metadata
+  - jekyll-github-metadata
   - jekyll-optional-front-matter
   - jekyll-paginate
   - jekyll-readme-index
@@ -53,11 +53,11 @@ defaults:
       path: ""
     values:
       layout: "default"
-      siteName: "Multarix's Projects"
+      siteName: "Website Name"
 
 incremental: true
 livereload: true
-url: multarix.com
+url: your-url.com
 
 exclude:
   - readme.md
