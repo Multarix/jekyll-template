@@ -8,8 +8,6 @@
     font-style: normal;
 }
 
-
-
 /* Using :root/ setting variables breaks these? */
 ::-webkit-scrollbar {
 	-webkit-appearance: none;
@@ -61,6 +59,7 @@ div {
 
 h1, h2, h3, h4, h5, h6 {
 	margin: 10px 0 10px 0;
+	padding-bottom: 5px;
 	border-bottom: 1px solid #888;
 	color: #fff;
 }
@@ -82,7 +81,9 @@ h5 {
 h6 {
 	font-size: 1em;
 }
-
+.title-margin {
+	margin: 5px 25px 10px 25px;
+}
 
 
 /* Links */
@@ -92,6 +93,7 @@ a {
 	cursor: pointer;
 	text-decoration: none;
 	transition: 0.2s;
+	margin-left: 0.05em;
 }
 a:hover {
 	color: #764740;
@@ -100,32 +102,21 @@ a:hover {
 a.heading-anchor {
 	color: inherit;
 	text-decoration: none;
-	transition: 0.2s;
 	
 	&:hover {
 		color: #d49595;
 	}
 }
-/* Not entirely happy about how these look... */
-a.external-link:after {
-	background-image: url(/assets/images/external-link.png);
-	background-size: 20px 20px;
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	vertical-align: middle;
-	margin-left: 0.2em;
-	content: "";
-}
-a.external-link:hover:after {
-	background-image: url(/assets/images/external-link-hover.png);
-	background-size: 20px 20px;
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	vertical-align: middle;
-	margin-left: 0.2em;
-	content: "";
+
+
+a.open-in-new:after {
+    position: relative;
+    bottom: -0.18em;
+    font-family: "Material Icons";
+    margin-left: 0.25em;
+    font-size: 1em;
+	font-weight: normal;
+    content: "\e89e";
 }
 
 
@@ -459,10 +450,14 @@ code {
 
 .page-content {
 	margin-top: 52px;
-	padding: 20px 50px 20px 50px;
+	padding: 1px 50px 20px 50px;
 	background-color: #1a1a1a;
 	border-radius: 15px;
 	display: block;
+}
+
+.div-center {
+	margin: auto;
 }
 
 .text-center {
@@ -550,6 +545,12 @@ code {
 		
 }
 
+/* Page content starts getting too small for the padding */
+@media screen and (max-width: 499px) {
+	.page-content {
+		padding: 1px 10px 20px 10px;
+	}
+}
 
 /* "Mobile - Large" */
 @media screen and (max-width: 425px) {
