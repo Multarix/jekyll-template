@@ -483,6 +483,9 @@ code {
 	text-align: justify;
 }
 
+.no-border {
+	border: none;
+}
 
 
 /* Smaller screens */
