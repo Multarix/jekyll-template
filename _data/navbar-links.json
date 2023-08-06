@@ -1,52 +1,51 @@
 [
 	{
 		"name": "home",
+		"active-group": "home",
 		"url": "/",
-		"img": "",
 		"dropdown": false,
 		"hover-links": []
 	},
 	{
-		"name": "test",
-		"url": "/test",
-		"img": "",
-		"dropdown": false,
-		"hover-links": []
-	},
-	{
-		"url": "/projects",
-		"name": "projects",
-		"img": "",
+		"name": "drop down",
+		"active-group": "drop-down",
+		"url": "",
 		"dropdown": true,
 		"hover-links": [
 			{
 				"name": "Project 1",
-				"url": "/projects/project-1",
-				"img": ""
+				"active-group": "project-1",
+				"url": "/project1"
 			},
 			{
 				"name": "Project 2",
-				"url": "/projects/project-2",
-				"img": ""
+				"active-group": "project-2",
+				"url": "/project2"
 			},
 			{
 				"name": "Project 3",
-				"url": "/projects/project-3",
-				"img": ""
+				"active-group": "project-3",
+				"url": "/project3"
 			},
 			{
 				"name": "Project 4",
-				"url": "/projects/project-4",
-				"img": ""
+				"active-group": "project-4",
+				"url": "/project4"
 			}
 		]
 	},
 	{
+		"name": "about",
+		"active-group": "about",
+		"url": "/about",
+		"dropdown": false,
+		"hover-links": []
+	},
+	{
 		"name": "github",
+		"active-group": "external-link",
 		"url": "https://github.com/",
-		"img": "",
 		"dropdown": false,
 		"hover-links": []
 	}
 ]
-

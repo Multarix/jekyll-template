@@ -1,17 +1,39 @@
+
 <div class="navbar" id="navbar">
 	<div class="navbar-container">
 		{% for item in site.data.navbar-links %}
+			{% capture itemGroup %}{{ item.active-group | upcase }}{% endcapture %}
 			{% if item.dropdown %}
 				<div class="nav-dropdown">
-					<button class="nav-dropbtn">{{ item.name  | upcase }}<span class="material-icons auto-size">arrow_drop_down</span></button>
+					
+					{% if itemGroup == pageGroup %}
+						<button class="nav-dropbtn active">{{ item.name  | upcase }}<span class="material-icons auto-size">arrow_drop_down</span></button>
+					{% else %}
+						<button class="nav-dropbtn">{{ item.name  | upcase }}<span class="material-icons auto-size">arrow_drop_down</span></button>
+					{% endif %}
+					
 					<div class="nav-dropdown-content">
 						{% for subitem in item.hover-links %}
-							<a href="{{ subitem.url }}">{{ subitem.name  | upcase }}</a>
+							{% capture subItemGroup %}{{ subitem.active-group | upcase }}{% endcapture %}
+							
+							{% if subItemGroup == pageGroup %}
+								<a class="active" href="{{ subitem.url }}">{{ subitem.name | upcase }}</a>
+							{% else %}
+								<a href="{{ subitem.url }}">{{ subitem.name | upcase }}</a>
+							{% endif %}
+							
 						{% endfor %}
 					</div>
 				</div>
+				
 			{% else %}
-				<a href="{{ item.url }}">{{ item.name  | upcase }}</a>
+			
+				{% if itemGroup == pageGroup %}
+					<a class="active" href="{{ item.url }}">{{ item.name | upcase }}</a>
+				{% else %}
+					<a href="{{ item.url }}">{{ item.name | upcase }}</a>
+				{% endif %}
+				
 			{% endif %}
 		{% endfor %}
 		<a class="mobile-bars" href="javascript:void(0);" onclick="topNavMobile()"><span class="material-icons">menu</span></a>
