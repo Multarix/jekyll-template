@@ -1,6 +1,7 @@
 ---
-title: "Home"
+title: Home
 permalink: /
+group: home
 ---
 
 # This is a Heading (h1)!
