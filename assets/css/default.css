@@ -27,8 +27,10 @@
 
 :root {
 	--background-color: #1a1a1a;
-	--background-color-light: #2a2a2a;
+	--background-color-light: #232323;
+	--background-color-lighter: #2f2f2f;
 	--background-color-dark: #0c0c0c;
+	--font-color: #d0d0d0;
 	
 	--link-font-color: #ac7870;
 	--link-font-hover-color: #764740;
@@ -45,7 +47,7 @@ body {
 	background-image: url("/assets/images/bg.png");
 	background-repeat: repeat;
 	background-color: var(--background-color);
-	color: #d0d0d0;
+	color: var(--font-color);
 	margin: 0 0 0 0;
 	padding: 40px 0 40px 0;
 }
@@ -295,7 +297,7 @@ button.copy-button {
     display: inline;
 	
     background-color: var(--navbar-background-color);
-    color: var(--navbar-font-color);
+    color: var(--font-color);
 	
     border: 0;
     box-shadow: 0 0 0 0;
@@ -308,6 +310,7 @@ button.copy-button {
 	opacity: 0;
 	
 	&:hover {
+		color: var(--navbar-font-color);
 		background-color: var(--navbar-background-hover-color);
 		cursor: pointer;
 	}
