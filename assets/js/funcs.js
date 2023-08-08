@@ -9,33 +9,17 @@ document.querySelectorAll('pre code').forEach(codeblock => {
 	copyButton.ariaLabel = "Copy code to clipboard";
 	copyButton.innerText = "content_copy";
 	copyButton.className = "material-icons copy-button";
+	copyButton.title = "Copy code to clipboard";
 
 	copyButton.onclick = async () => {
 
 		navigator.clipboard.writeText(codeblock.innerText);
-
-		copyButton.style.opacity = 1;
-		copyButton.style.color = "transparent";
-		copyButton.style.backgroundColor = "#538b58";
+		copyButton.className += " clicked";
 
 		setTimeout(() => {
-			copyButton.innerText = "check";
-			copyButton.style.color = "white";
-		}, 205);
-
-		setTimeout(() => {
-			copyButton.style.color = "white";
-		}, 210);
-
-		setTimeout(() => {
-			copyButton.style.opacity = 0;
-		}, 1515);
-
-		setTimeout(() => {
-			copyButton.innerText = "content_copy";
-			copyButton.style = "";
+			copyButton.className = "material-icons copy-button";
 			copyButton.blur();
-		}, 1720);
+		}, 2010);
 
 	};
 
