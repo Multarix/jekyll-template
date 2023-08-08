@@ -8,6 +8,31 @@
     font-style: normal;
 }
 
+@keyframes copybtn {
+	0% {
+		opacity: 0;
+		color: transparent;
+	}
+	
+	10% {
+		opacity: 1;
+		color: white;
+		
+	}
+	
+	90% {
+		opacity: 1;
+		color: white;
+		
+	}
+	
+	100% {
+		opacity: 0;
+		color: transparent;
+		
+	}
+}
+
 /* Using :root/ setting variables breaks these? */
 ::-webkit-scrollbar {
 	-webkit-appearance: none;
@@ -175,7 +200,7 @@ table tr:nth-child(odd) td {
 	margin: 0 5px;
 }
 .overflow-container table, .overflow-container pre {
-	min-width: 340px;
+	min-width: 300px;
 	margin: 0 0 5px;
 }
 
@@ -218,7 +243,8 @@ Colors: /blob/v0.64.0/lib/css/exports/_stacks-constants-colors.less
 */
 .hljs {
     color:#fff;
-    background:#0a0a0a;
+    background: #141414;
+	border: black 1px solid;
 	border-radius: 7px;
 }
 .hljs-subst {
@@ -303,10 +329,11 @@ button.copy-button {
     box-shadow: 0 0 0 0;
     border-radius: 4px;
 	
-    height: 42px;
-    padding: 9px 9px 9px 12px;
+	height: 45px;
+    width: 49px;
+    padding: 9px 9px 9px 10px;
+	transition: 100ms;
 	
-    transition: 0.2s;
 	opacity: 0;
 	
 	&:hover {
@@ -316,8 +343,28 @@ button.copy-button {
 	}
 	
 	&:focus {
-		background-color: #538b58;
+		/* background-color: #538b58; */
+		position: relative;
+		visibility: visible;
+		&:after {
+			all: inherit;
+			
+			content: "check";
+			
+			position: absolute;
+			top: 0;
+			left: 0;
+			
+			opacity: 0;
+			color: transparent;
+			background-color: #538b58;
+			
+			animation: forwards 2s copybtn;
+		}
 	}
+}
+button.copy-button.clicked {
+	opacity: 1;
 }
 
 pre:hover > button.copy-button {
@@ -501,6 +548,10 @@ code {
 
 .no-border {
 	border: none;
+}
+
+.hidden {
+	display: none;
 }
 
 
