@@ -1,63 +1,32 @@
-const elementCache = {};
+const anchorCache = {};
 
-// "Copy Code to Clipboard" buttons for code blocks
-document.querySelectorAll('pre code').forEach(codeblock => {
-	const parent = codeblock.parentNode;
+function topNavMobile() {
+	const x = document.getElementById("navbar");
+	x.className = (x.className === "navbar") ? "navbar responsive" : "navbar";
+}
 
-	const copyButton = document.createElement('button');
-	copyButton.type = "button";
-	copyButton.ariaLabel = "Copy code to clipboard";
-	copyButton.innerText = "content_copy";
-	copyButton.className = "material-icons copy-button";
-	copyButton.title = "Copy code to clipboard";
+/** @param {HTMLElement} element */
+function updateURL(element) {
+	if(!element) return;
+	if(!element.href) return;
 
-	copyButton.onclick = async () => {
+	const hashLink = window.location.href.split('#')[0] + element.getAttribute('href');
 
-		navigator.clipboard.writeText(codeblock.innerText);
-		copyButton.className += " clicked";
+	history.replaceState(null, null, hashLink);
+	navigator.clipboard.writeText(hashLink);
+}
 
-		setTimeout(() => {
-			copyButton.className = "material-icons copy-button";
-			copyButton.blur();
-		}, 2010);
-
-	};
-
-	parent.prepend(copyButton);
-});
-
-
-// Place all tables into a div with class "table-container"
-document.querySelectorAll('table').forEach(table => {
-	const parent = table.parentNode;
-	if(parent.className === "table-container") return;
-
-	const div = document.createElement('div');
-	div.className = "table-container";
-
-	parent.insertBefore(div, table);
-	div.appendChild(table);
-});
-
-
-// Make all links with class "open-in-new" open in a new tab
-document.querySelectorAll('a.open-in-new').forEach(link => {
-	link.target = "_blank";
-});
-
-
-// Make all links that start with "#" scroll to the element with the id
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-	anchor.addEventListener('click', scrollToAnchorLink);
-});
 
 function scrollToAnchorLink(e) {
 	e.preventDefault();
-	const anchorLink = `[id='${this.hash.replace("#", "")}']`;
-	const targetElement = elementCache[anchorLink] || document.querySelector(anchorLink);
-	elementCache[anchorLink] = targetElement;
-	const offset = targetElement?.getBoundingClientRect()?.top + window.scrollY;
+
+	const query = `[id='${this.hash.replace("#", "")}']`;
+	const element = anchorCache[this.hash] || document.querySelector(query);
+	const offset = element?.getBoundingClientRect()?.top + window.scrollY;
+
 	if(offset){
+		updateURL(this);
+
 		window.scroll({
 			top: offset - 65,
 			behavior: 'smooth'
@@ -68,11 +37,12 @@ function scrollToAnchorLink(e) {
 
 function scrollToAnchorLinkOnLoad() {
 	const hash = window.location.hash;
+
 	if(hash){
-		const anchorLink = `[id='${hash.replace("#", "")}']`;
-		const element = elementCache[anchorLink] || document.querySelector(anchorLink);
-		elementCache[anchorLink] = element;
+		const query = `[id='${hash.replace("#", "")}']`;
+		const element = anchorCache[hash] || document.querySelector(query);
 		const offset = element?.getBoundingClientRect()?.top + window.scrollY;
+
 		if(offset){
 			window.scroll({
 				top: offset - 65,
@@ -82,25 +52,75 @@ function scrollToAnchorLinkOnLoad() {
 	}
 }
 
+function onLoad() {
+	// Make all links with class "open-in-new" open in a new tab
+	document.querySelectorAll('a.open-in-new').forEach(link => {
+		link.target = "_blank";
+	});
+
+
+	// Make all links that start with "#" scroll to the element with the id
+	document.querySelectorAll('a[href^="#"]').forEach(link => {
+		anchorCache[link.hash] = link;
+		link.addEventListener('click', scrollToAnchorLink);
+	});
+
+
+	// "Copy Code to Clipboard" buttons for code blocks
+	document.querySelectorAll('pre code').forEach(codeBlockElement => {
+		const parentElement = codeBlockElement.parentElement;
+
+		const copyButtonElement = document.createElement('button');
+		copyButtonElement.type = "button";
+		copyButtonElement.ariaLabel = "Copy code to clipboard";
+		copyButtonElement.innerText = "content_copy";
+		copyButtonElement.className = "material-icons copy-button";
+		copyButtonElement.title = "Copy code to clipboard";
+
+		copyButtonElement.onclick = async () => {
+
+			navigator.clipboard.writeText(codeBlockElement.innerText);
+			copyButtonElement.className += " clicked";
+
+			setTimeout(() => {
+				copyButtonElement.className = "material-icons copy-button";
+				copyButtonElement.blur();
+			}, 2010);
+
+		};
+
+		parentElement.prepend(copyButtonElement);
+	});
+
+
+	// Place all tables, and codeblocks into a div with class "overflow-container"
+	document.querySelectorAll('table:not(.overflow-container table)').forEach(tableElement => {
+		const parentElement = tableElement.parentElement;
+
+		const overflowContainerElement = document.createElement('div');
+		overflowContainerElement.className = "overflow-container";
+
+		parentElement.insertBefore(overflowContainerElement, tableElement);
+		overflowContainerElement.appendChild(tableElement);
+	});
+
+	document.querySelectorAll('pre code').forEach(codeBlock => {
+		const preElement = codeBlock.parentElement;
+		const parentElement = preElement?.parentElement;
+
+		if(parentElement?.className.includes("overflow-container")) return;
+
+		const overflowContainerElement = document.createElement('div');
+		overflowContainerElement.className = "overflow-container";
+
+		parentElement.insertBefore(overflowContainerElement, preElement);
+		overflowContainerElement.appendChild(preElement);
+	});
+}
+
 window.onload = scrollToAnchorLinkOnLoad;
 
-
-function topNavMobile() {
-	const x = document.getElementById("navbar");
-	x.className = (x.className === "navbar") ? "navbar responsive" : "navbar";
-}
-
-
-function scrollToLink(element) {
-	if(!element) return;
-	if(!element.href) return;
-
-	const hashLink = window.location.href.split('#')[0] + element.getAttribute('href');
-
-	history.replaceState(null, null, hashLink);
-	navigator.clipboard.writeText(hashLink);
-}
-
+onLoad();
 
 /* eslint-disable no-undef */
 hljs.highlightAll();
