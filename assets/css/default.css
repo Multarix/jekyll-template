@@ -17,20 +17,21 @@
 	10% {
 		opacity: 1;
 		color: white;
-		
 	}
 	
 	90% {
 		opacity: 1;
 		color: white;
-		
 	}
 	
 	100% {
 		opacity: 0;
 		color: transparent;
-		
 	}
+}
+
+html {
+	scroll-behavior: smooth;
 }
 
 /* Using :root/ setting variables breaks these? */
@@ -165,11 +166,16 @@ table {
 	border: 1px solid #121212;
 	width: 100%;
     border-collapse: collapse;
-	margin: 0 0 20px;
+	margin: 0 0 5px;
 	border-spacing: 0;
 	display: table;
 	box-sizing: border-box;
     text-indent: initial;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
 }
 th {
 	background-color: #764740;
@@ -193,16 +199,6 @@ table tr:nth-child(odd) td {
 }
 
 
-
-/* Overflow containers */
-.overflow-container {
-	overflow-x: auto;
-	margin: 0 5px;
-}
-.overflow-container table, .overflow-container pre {
-	min-width: 300px;
-	margin: 0 0 5px;
-}
 
 ol li {
 	line-height: 1.5em;
@@ -326,6 +322,7 @@ button.copy-button {
     display: inline;
 	
     background-color: var(--navbar-background-color);
+	background-image: var(--navbar-background-color);
     color: var(--font-color);
 	
     border: 0;
@@ -338,43 +335,59 @@ button.copy-button {
 	transition: 100ms;
 	
 	opacity: 0;
+	position: relative;
 	
 	&:hover {
+		opacity: 1;
+		visibility: visible;
+		
 		color: var(--navbar-font-color);
 		background-color: var(--navbar-background-hover-color);
 		cursor: pointer;
 	}
 	
-	&:focus {
-		/* background-color: #538b58; */
-		position: relative;
+	&:after {
+		all: inherit;
 		visibility: visible;
-		&:after {
-			all: inherit;
 			
-			content: "check";
+		content: "check";
 			
-			position: absolute;
-			top: 0;
-			left: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
 			
-			opacity: 0;
-			color: transparent;
-			background-color: #538b58;
-			
-			animation: forwards 2s copybtn;
-		}
+		opacity: 0;
+		color: transparent;
+		background-color: #538b58;
 	}
 }
+
 button.copy-button.clicked {
 	opacity: 1;
+	visibility: visible;
+	&:after {
+		animation: forwards 2s copybtn;
+	}
 }
 
 pre:hover > button.copy-button {
 	opacity: 1;
 }
 
+/* Overflow containers */
+.overflow-container {
+	overflow-x: auto;
+	margin: 0 5px;
+}
 
+.overflow-container pre {
+	min-width: fit-content;
+	margin: 0 0 5px;
+}
+
+.overflow-container pre code {
+	white-space: pre;
+}
 
 /* Markdown */
 blockquote {
@@ -565,6 +578,52 @@ code {
 
 .hidden {
 	display: none;
+}
+
+.top-pad {
+	padding-top: 1em;
+}
+
+.right-pad {
+	padding-right: 1em;
+}
+
+.bot-pad {
+	padding-bottom: 1em;
+}
+
+.left-pad {
+	padding-left: 1em;
+}
+
+.vert-pad {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.hor-pad {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.no-pad {
+	padding: 0;
+}
+
+.no-margin {
+	margin: 0;
+}
+.no-margin-top {
+	margin-top: 0;
+}
+.no-margin-bot {
+	margin-bottom: 0;
+}
+.no-margin-left {
+	margin-left: 0;
+}
+.no-margin-right {
+	margin-right: 0;
 }
 
 
