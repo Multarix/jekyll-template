@@ -1,9 +1,10 @@
-const anchorCache = {};
+const anchorCache = new Map();
 
 function topNavMobile() {
 	const x = document.getElementById("navbar");
 	x.className = (x.className === "navbar") ? "navbar responsive" : "navbar";
 }
+
 
 /** @param {HTMLElement} element */
 function updateURL(element) {
@@ -20,18 +21,17 @@ function updateURL(element) {
 function scrollToAnchorLink(e) {
 	e.preventDefault();
 
-	const query = `[id='${this.hash.replace("#", "")}']`;
-	const element = anchorCache[this.hash] || document.querySelector(query);
-	const offset = element?.getBoundingClientRect()?.top + window.scrollY;
+	const id = this.getAttribute('href').replace("#", "");
+	const element = anchorCache[id] || document.getElementById(id);
+	const offset = element.getBoundingClientRect().top + window.scrollY - 60;
 
 	if(offset){
-		updateURL(this);
-
 		window.scroll({
-			top: offset - 65,
+			top: offset,
 			behavior: 'smooth'
 		});
 	}
+
 }
 
 
@@ -39,18 +39,19 @@ function scrollToAnchorLinkOnLoad() {
 	const hash = window.location.hash;
 
 	if(hash){
-		const query = `[id='${hash.replace("#", "")}']`;
-		const element = anchorCache[hash] || document.querySelector(query);
-		const offset = element?.getBoundingClientRect()?.top + window.scrollY;
+		const id = hash.replace("#", "");
+		const element = anchorCache[id] || document.getElementById(id);
+		const offset = element.getBoundingClientRect().top + window.scrollY - 60;
 
 		if(offset){
 			window.scroll({
-				top: offset - 65,
+				top: offset,
 				behavior: 'smooth'
 			});
 		}
 	}
 }
+
 
 function onLoad() {
 	// Make all links with class "open-in-new" open in a new tab
@@ -60,9 +61,11 @@ function onLoad() {
 
 
 	// Make all links that start with "#" scroll to the element with the id
-	document.querySelectorAll('a[href^="#"]').forEach(link => {
-		anchorCache[link.hash] = link;
-		link.addEventListener('click', scrollToAnchorLink);
+	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+		const id = anchor.getAttribute('href').replace("#", "");
+		anchorCache[id] = document.getElementById(id);
+
+		anchor.addEventListener('click', scrollToAnchorLink);
 	});
 
 
@@ -118,9 +121,12 @@ function onLoad() {
 	});
 }
 
+
 window.onload = scrollToAnchorLinkOnLoad;
 
+
 onLoad();
+
 
 /* eslint-disable no-undef */
 hljs.highlightAll();
