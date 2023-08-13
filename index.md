@@ -19,14 +19,14 @@ At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praese
 
 ```
 const buttonsToHide = [
-"Open sticker picker",
-"Send a gift",
-"Boost this server"
+	"Open sticker picker",
+	"Send a gift",
+	"Boost this server"
 ];
 
 let css = "";
-buttonsToHide.forEach(button => {
-css = css.concat(`[aria-label="${button}"]{display:none}`);
+	buttonsToHide.forEach(button => {
+	css = css.concat(`[aria-label="${button}"]{display:none}`);
 });
 
 css = css.concat('[id="channel-attach-THREAD"]{display:none}');

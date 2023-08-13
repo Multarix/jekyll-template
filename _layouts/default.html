@@ -3,13 +3,13 @@
 	<head>
 		<!-- Meta Tags -->
 		<meta charset="utf-8">
-		<meta property="og:title" content="{{ page.title }} | {{ page.siteName }}"/>
-		<meta property="og:description" content="{{ page.description }}"/>
-		<meta property="og:type" content="website"/>
-		<meta property="og:site_name" content="{{ site.url | split: '//' | last | split: '/' | first }}"/>
-		<meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
-		<meta property="og:image" content="{{ 'assets/images/site-logo.png' | relative_url }}"/>
-		<meta content="#764740" data-react-helmet="true" name="theme-color"/>
+		<meta property="og:title" content="{{ page.title }} | {{ page.siteName }}">
+		<meta property="og:description" content="{{ page.description }}">
+		<meta property="og:type" content="website">
+		<meta property="og:site_name" content="{{ site.url | split: '//' | last | split: '/' | first }}">
+		<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+		<meta property="og:image" content="{{ 'assets/images/site-logo.png' | relative_url }}">
+		<meta content="#764740" data-react-helmet="true" name="theme-color">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<!-- Favicon -->
@@ -23,8 +23,8 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		
 		<!-- Javascript -->
-		<script type="text/javascript" defer src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-		<script type="text/javascript" defer src="{{ 'assets/js/funcs.js' | relative_url }}"></script>
+		<script defer src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+		<script defer src="{{ 'assets/js/funcs.js' | relative_url }}"></script>
 		
 		<!-- Title -->
 		<title>{% if jekyll.environment == "development" %}(dev) {% endif %}{{ page.title }} | Multarix's Projects</title>
